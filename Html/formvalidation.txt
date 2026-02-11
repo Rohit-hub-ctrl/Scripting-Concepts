@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation Example</title>
+</head>
+<body>
+  <form id="myForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required minlength="6">
+    <br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="error"></p>
+
+  <script>
+    const form = document.getElementById("myForm");
+    const errorMsg = document.getElementById("error");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop form from submitting immediately
+
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Basic validation checks
+      if (username === "") {
+        errorMsg.textContent = "Username cannot be empty.";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        errorMsg.textContent = "Please enter a valid email.";
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters.";
+        return;
+      }
+
+      // If all checks pass
+      errorMsg.textContent = "Form submitted successfully!";
+      // Here you could send data to server with fetch/AJAX
+    });
+  </script>
+</body>
+</html>

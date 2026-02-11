@@ -1,0 +1,9 @@
+<html>
+<body>
+    <script>
+        document.write("Hello Document");
+        console.log("Hello console window");
+        alert("alertmessege");
+    </script>
+</body>
+</html>
